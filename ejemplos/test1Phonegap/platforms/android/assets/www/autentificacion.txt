@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<head>
+   <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+   <title>Autentificacion</title>
+</head>
+<body>
+    <div> 
+	<h4>Nombre de Usuario:</h4>
+	<h4>Contraseña:<h4>
+	
+    </div>
+</body>
+</html>
