@@ -13,13 +13,14 @@
           <form action="http://localhost/pymes/public/usuarios" method="post">
               <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre">            
               <input type="text" class="form-control" name="apellido" placeholder="Apellido">  
-              <input type="text" class="form-control" id="login" name="login" placeholder="Nombre de Usuario">
+              <input type="password" class="form-control" id="login" name="login" placeholder="Nombre de Usuario">
               <input type="text" class="form-control" id="contrasena" name="contrasena" placeholder="Contrase&ntilde;a">
               <input type="text" class="form-control" name="repetirContrasena" placeholder="Repetir Contrase&ntilde;a">
               <input type="text" class="form-control" id="ci" name="ci" placeholder="Numero de Carnet">
               <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
 
               <select class="form-control">
+                <option selected disabled>Selecione Tipo de Usuario</option>
                 <option>Administrador</option>
                 <option>Vendedor</option>
                 <option>Almacenero</option>
