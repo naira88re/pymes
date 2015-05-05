@@ -1,0 +1,1 @@
+En la carpeta ventas_ventas.html: la columna unidades, tiene un input que se debe reducir el tamaño
