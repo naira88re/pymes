@@ -4,44 +4,41 @@
         <title>Listar usuarios</title>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
     </head>
-    <body>
+    <body onload="initListaUsuarios()">
         
         <div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">LISTA DE USUARIOS DEL SISTEMA</h3>
   </div>
   <div class="panel-body">
-        <ol>
-                 <li><input type="checkbox" />Naira Romero Echeverria</li> 
-                 <li><input type="checkbox"/>Gabriel Delgado de Romero</li>
-          
-         </ol>
-       <a data-toggle="modal" href="#myModal" class="btn btn-info btn-lg btn-block">Eliminar</a>
+    <div class="alert alert-success" role="alert" >Usuario eliminado con exito!</div>
+    <div class="alert alert-danger" role="alert" >Ocurrio un error eliminando usuarios.</div>
+        <ol id="listaUsuarios"></ol>
+       <a data-toggle="modal" href="#modalEliminarUsuario" class="btn btn-info btn-lg btn-block">Eliminar</a>
         </div>
 </div>
         
         <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Eliminar Usuario(s)</h4>
       </div>
       <div class="modal-body">
-        &iquest;Esta seguro quedesea eliminara los usuarios selecccionados?
+        &iquest;Esta seguro que desea eliminar los usuarios selecccionados?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary">Si</button>
+        <button type="button" class="btn btn-primary" onclick="elminarUsuarios()">Si</button>
       </div>
     </div>
   </div>
 </div>
-        
         <script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/scriptJS.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/scriptJS.js"></script>
     </body>
 </html>
  

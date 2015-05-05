@@ -4,7 +4,7 @@
     <title>Resgistrar Usuario</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
   </head>
-  <body onload="init()">
+  <body onload="initRegistrarUsuarios()">
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">REGISTRAR NUEVO USUARIO</h3>
@@ -15,19 +15,16 @@
           <div class="alert alert-danger" role="alert" >Ocurrio un error, verifique sus datos.</div>
           <form action="http://localhost/pymes/public/usuarios" method="post">
               <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre">            
-              <input type="text" class="form-control" name="apellido" placeholder="Apellido">  
+              <input type="text" class="form-control" id="apellidos" name="apellido" placeholder="Apellido">  
               <input type="text" class="form-control" id="login" name="login" placeholder="Nombre de Usuario">
               <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contrase&ntilde;a">
-              <input type="password" class="form-control" name="repetirContrasena" placeholder="Repetir Contrase&ntilde;a">
+              <input type="password" class="form-control" id="repetirContrasena" name="repetirContrasena" placeholder="Repetir Contrase&ntilde;a">
               <input type="text" class="form-control" id="ci" name="ci" placeholder="Numero de Carnet">
               <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
-
-              <select class="form-control">
-                <option selected disabled>Selecione Tipo de Usuario</option>
-                <option>Administrador</option>
-                <option>Vendedor</option>
-                <option>Almacenero</option>
-              </select>
+            
+              <div class="divTipo">
+                <select class="form-control" id="tipos"></select>
+              </div>
               <!--<button type="submit" class="btn btn-info btn-lg btn-block">REGISTRAR</button>-->
               <button type="button" onclick="crearUsuario()" class="btn btn-info btn-lg btn-block">REGISTRAR</button>
             </form>
