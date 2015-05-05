@@ -1,0 +1,11 @@
+# Crear tabla
+php artisan migrate:make create_users_table
+
+# Crear los datos
+php artisan migrate
+
+#Aplicar cambios en las tablas
+php artisan migrate:refresh
+
+#Despues de clonar el proyecto siempre es bueno ejecutar desde la raiz del proyecto
+composer install
