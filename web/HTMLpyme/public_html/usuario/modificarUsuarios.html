@@ -3,47 +3,46 @@
     <head>
         <title>Modificar Usuarios</title>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
-       
     </head>
-    <body>
+    <body onload="initModificarUsuario()">
         <div class="panel panel-info">
            <div class="panel-heading">
                  <h3 class="panel-title">MODIFICAR USUARIO</h3>
            </div>
            <div class="panel-body">
         
-       
+              <div class="alert alert-success" role="alert" >Usuario modificado con exito!</div>
+              <div class="alert alert-danger" role="alert" >Ocurrio un error modificando usuario.</div>
                 <form action="">
-                     
-                     <input type="text" class="form-control" name="mNombre"/>
-                     <input type="text" class="form-control" name="mApellido"/>
-                     <input type="text" class="form-control" name="mLogin"/>
-                     <input type="password" class="form-control" name="mContraseña"/>
-                     <input type="password" class="form-control" name="mRepetirContraseña"/>
-                     <input type="text" class="form-control" name="mCarnet"/>
-                     <input type="text" class="form-control" name="mTelefono"/>
-                         <a data-toggle="modal" href="#myModal" class="btn btn-info btn-lg btn-block">Modificar</a>
-
+                      <input type="hidden" id="id" value=""/>
+                     <input type="text" id="nombres" class="form-control" name="mNombre"/>
+                     <input type="text" id="apellidos" class="form-control" name="mApellido"/>
+                     <input type="text" id="login" class="form-control" name="mLogin"/>
+                     <input type="password"id="contrasena"  class="form-control" name="mContraseña"/>
+                     <input type="password" id="repetirContrasena" class="form-control" name="mRepetirContraseña"/>
+                     <input type="text" id="ci" class="form-control" name="mCarnet"/>
+                     <input type="text" id="telefono" class="form-control" name="mTelefono"/>
+                      <div class="divTipo">
+                        <select class="form-control" id="tipos"></select>
+                      </div>
+                     <a data-toggle="modal" href="#modalModificarUsuario" class="btn btn-info btn-lg btn-block">Modificar</a>
                 </form>
-         
            </div>
         </div>
-       
-
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">ModificarUsuario</h4>
       </div>
       <div class="modal-body">
         &iquest;Esta seguro que desea guardarlos cambios?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary">Si</button>
+        <button type="button" class="btn btn-primary" onclick="modificarUsuario()">Si</button>
       </div>
     </div>
   </div>
@@ -51,5 +50,6 @@
         
         <script src="../js/jquery.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/scriptJS.js"></script>
               
     </body>

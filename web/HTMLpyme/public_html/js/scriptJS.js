@@ -12,6 +12,12 @@ function initListaUsuarios() {
   cargarListaUsuarios();
 }
 
+function initModificarUsuario() {
+
+  ocultarMensajes();
+  cargarUsuario();
+}
+
 function ocultarMensajes() {
 
   $(".alert-success").hide();
@@ -67,8 +73,10 @@ function cargarListaUsuarios() {
 
       var usuario = data[index];
       html += "<li> <input name=\"usuarios[]\" value=\" " + 
-        usuario.id + "\" type=\"checkbox\" /> " + usuario.nombre_usuario + 
-        " " + usuario.apellido_usuario + "</li>";
+        usuario.id + "\" type=\"checkbox\" /> <a href=\"modificarUsuarios.html?id="+ 
+        usuario.id + "\">" + 
+        usuario.nombre_usuario + 
+        " " + usuario.apellido_usuario + " </a></li>";
     };
     
     $('#listaUsuarios').html(html);
@@ -85,6 +93,79 @@ function elminarUsuarios() {
   
   $('#modalEliminarUsuario').modal('hide');
   cargarListaUsuarios();
+}
+
+function cargarUsuario() {
+
+  var id = getUrlParameter('id');
+  if (id !== undefined ) {
+  
+    data = { id : id };
+    $.ajax({
+      url: URLSERVER + 'usuario',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify(data),
+      processData: false,
+      contentType: 'application/json',
+      CrossDomain:true,
+      async: false,
+      success: function (datos) {
+        console.log(datos);
+        $('#id').val(datos.id);
+        $('#nombres').val(datos.nombre_usuario);
+        $('#apellidos').val(datos.apellido_usuario);
+        $('#login').val(datos.login_usuario);
+        $('#contrasena').val(datos.password_usuario);
+        $('#repetirContrasena').val(datos.password_usuario);
+        $('#ci').val(datos.ci_usuario);
+        $('#telefono').val(datos.telefono_usuario);
+        
+        $.get( URLSERVER + "tipos_usuarios", function( data ) {
+          var html = "<option value=\"0\">Selecione Tipo de Usuario</option>"
+          for(index in data) {
+
+            var tipo = data[index];
+            var seleccionado = "";
+            
+            if (tipo.id === datos.id_tipo_usuario) {
+            
+              seleccionado = "selected";
+            }
+            
+            html += "<option value=\" " + tipo.id + " \" "+ 
+                seleccionado + " >" +
+                tipo.tipo_usuario + "</option>"
+          };
+          $('#tipos').html(html);
+        });
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(xhr.status);
+        console.log(xhr.responseText);
+
+        $("#alertCargarUsuario").show("slow");
+      }
+    });
+  }
+}
+
+function modificarUsuario() {
+
+  datos = {
+  
+    'id': $('#id').val(),
+    'nombres': $('#nombres').val(),
+    'apellidos': $('#apellidos').val(),
+    'usuario': $('#login').val(),
+    'contrasena': $('#contrasena').val(),
+    'ci': $('#ci').val(),
+    'telefono': $('#telefono').val(),
+    'id_tipo_usuario': $('#tipos').val()
+  };
+  
+  operacionServidor("usuarios", "PUT", datos);
+  $('#modalModificarUsuario').modal('hide');
 }
 
 function limpiarCampos(campos) {
@@ -120,3 +201,17 @@ function operacionServidor(ruta, tipo, datos) {
       }
     });
 }
+
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}  
