@@ -5,7 +5,7 @@
         <title>Modificar Producto</title>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
     </head>
-    <body>
+    <body onload="initModificarProducto()">
         
         <div class="panel panel-info">
            <div class="panel-heading">
@@ -13,39 +13,41 @@
            </div>
            <div class="panel-body">
                <form action="">
-        
-                <input type="text"  class="form-control" name="mCodigoProduco" >
-                <input type="text" class="form-control" name="mNombreProducto" >
-                 <input type="text" class="form-control" name="mMedidaProducto" >
-                <input type="text" class="form-control" name="mCantidadContenido">
-                <input type="number" class="form-control" name="mPrecioCompra">
-                <input type="number" class="form-control" name="mPrecioVenta" >
+                <input type="hidden" id="id" />
+                <input type="text"  id="codigo" class="form-control" name="mCodigoProduco" >
+                <input type="text" id="nombre" class="form-control" name="mNombreProducto" >
+                 <input type="text" id="medida" class="form-control" name="mMedidaProducto" >
+                <input type="text" id="cantidad" class="form-control" name="mCantidadContenido">
+                <input type="number" id="compra" class="form-control" name="mPrecioCompra">
+                <input type="number" id="venta" class="form-control" name="mPrecioVenta" >
+                 <input type="text" id="marca" data-id-marca="" class="form-control" name="marca" />
                  <!--<button type="button" class="btn btn-info btn-lg btn-block">MODIFICAR</button>-->
-                 <a data-toggle="modal" href="#myModal" class="btn btn-info btn-lg btn-block">Modificar</a>
+                 <a data-toggle="modal" href="#modalModificarProducto" class="btn btn-info btn-lg btn-block">Modificar</a>
                </form>
            </div>
         </div>  
         
          <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalModificarProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Modificar Producto</h4>
       </div>
       <div class="modal-body">
           &iquest;Esta seguro que desea guardar los cambios?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary">Si</button>
+        <button type="button" class="btn btn-primary" onclick="modificarProducto()">Si</button>
       </div>
     </div>
   </div>
 </div>
         
         <script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/productos.js"></script>
     </body>
 </html>

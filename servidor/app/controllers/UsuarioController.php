@@ -27,37 +27,54 @@ class UsuarioController extends BaseController {
     
       $usuario = new Usuario;
 
-      if (Input::has('nombres') && Input::has('usuario') && Input::has('contrasena')) {
+      if (Input::has('nombres') && Input::has('usuario') 
+          && Input::has('contrasena') && Input::has('id_tipo_usuario') &&
+         Input::has('apellidos')) {
         
-        $usuario->nombre_usuarios = Input::get('nombres');
-        $usuario->apellido_usuarios = Input::get('apellidos');
-        $usuario->login_usuarios = Input::get('usuario');
-        $usuario->password_usuarios = Input::get('contrasena');
-        $usuario->tipo_usuarios = Input::get('tipo_usuarios');
+        $usuario->nombre_usuario = Input::get('nombres');
+        $usuario->apellido_usuario = Input::get('apellidos');
+        $usuario->login_usuario = Input::get('usuario');
+        $usuario->password_usuario = Input::get('contrasena');
+        $tipo = TipoUsuario::findOrFail(Input::get('id_tipo_usuario'));
+        $usuario->id_tipo_usuario = $tipo->id;
         
-        if (Input::has('ci')) {
-        
-          $usuario->ci_usuarios = Input::get('ci');
-        }
-        
-        if (Input::has('telefono')) {
-        
-          $usuario->telefono_usuarios = Input::get('telefono');
-        }
+        //Columnas opcionales, si no existe dato, seran 0
+        $usuario->ci_usuario = Input::get('ci', 0);
+        $usuario->telefono_usuario = Input::get('telefono', 0);
 
         $usuario-> timestamps = false;
-        $usuario ->save();
+        $usuario->save();
         
         return $usuario;
 
       } else {
       
-        $mensaje = 'Los campos \'nombres\', \'usuario\' y \'contrasena\' son requeridos.';
+        $mensaje = 'Los campos \'nombres\', \'usuario\', \'contrasena\' y \'tipo\' son requeridos.';
         return Utils::enviarRespuesta('Datos incompletos', $mensaje, 500);
       }
     } catch(Exception $e) {
       
       return Utils::enviarRespuesta('Error', $e->getMessage(), 500);
+    }
+  }
+  
+  /*
+  * Description: Mostrar informacion de un usuario especifico
+  * Method: GET
+  * Return: JSON
+  */
+  public function mostrarUsuario() {
+  
+    try {
+    
+      if (Input::has('id')) {
+      
+        $usuario = Usuario::findOrFail(Input::get('id'));
+        return $usuario;
+      }
+    } catch(Exception $e) {
+    
+      return Utils::enviarRespuesta('Exception', $e->getMessage(), 500);
     }
   }
 
@@ -101,13 +118,13 @@ class UsuarioController extends BaseController {
     
         $usuario = Usuario::findOrFail(Input::get('id'));
 
-        $usuario->nombre_usuarios = Input::get('nombres', $usuario->nombre_usuarios);
-        $usuario->apellido_usuarios = Input::get('apellidos', $usuario->apellido_usuarios);
-        $usuario->login_usuarios = Input::get('usuario', $usuario->login_usuarios);
-        $usuario->password_usuarios = Input::get('contrasena', $usuario->password_usuarios);
-        $usuario->ci_usuarios = Input::get('ci', $usuario->ci_usuarios);
-        $usuario->telefono_usuarios = Input::get('telefono', $usuario->telefono_usuarios);
-        $usuario->tipo_usuarios = Input::get('tipo_usuarios', $usuario->tipo_usuarios);
+        $usuario->nombre_usuario = Input::get('nombres', $usuario->nombre_usuario);
+        $usuario->apellido_usuario = Input::get('apellidos', $usuario->apellido_usuario);
+        $usuario->login_usuario = Input::get('usuario', $usuario->login_usuario);
+        $usuario->password_usuario = Input::get('contrasena', $usuario->password_usuario);
+        $usuario->ci_usuario = Input::get('ci', $usuario->ci_usuario);
+        $usuario->telefono_usuario = Input::get('telefono', $usuario->telefono_usuario);
+        $usuario->id_tipo_usuario = Input::get('tipo_usuario', $usuario->id_tipo_usuario);
         $usuario->timestamps = false;
 
         $usuario-> save();

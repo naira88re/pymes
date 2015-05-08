@@ -23,8 +23,15 @@ Route::post('clientes', 'ClienteController@guardarCliente');
 Route::delete('clientes/{id}', 'ClienteController@borrarCliente');
 Route::put('clientes/{id}', 'ClienteController@modificarCliente');
 
+//routes tipos_usuarios
+Route:: get('tipos_usuarios', 'TipoUsuarioController@mostrarTiposUsuarios');
+Route:: post('tipos_usuarios', 'TipoUsuarioController@guardarTipoUsuario');
+Route:: delete('tipos_usuarios', 'TipoUsuarioController@borrarTipoUsuario');
+Route:: put('tipos_usuarios', 'TipoUsuarioController@modificarTipoUsuario');
+
 //routes usuarios
 Route:: get('usuarios', 'UsuarioController@mostrarUsuarios');
+Route:: post('usuario', 'UsuarioController@mostrarUsuario');
 Route:: post('usuarios', 'UsuarioController@guardarUsuario');
 Route:: delete('usuarios', 'UsuarioController@borrarUsuario');
 Route:: put('usuarios', 'UsuarioController@modificarUsuario');
@@ -34,6 +41,13 @@ Route:: get('marcas_productos', 'MarcaProductoController@mostrarMarcaProducto');
 Route:: post('marcas_productos', 'MarcaProductoController@guardarMarcaProducto');
 Route:: delete('marcas_productos', 'MarcaProductoController@borrarMarcaProducto');
 Route:: put('marcas_productos', 'MarcaProductoController@modificarMarcaProducto');
+
+//routes producto
+Route:: get('productos', 'ProductoController@mostrarProductos');
+Route:: post('producto', 'ProductoController@mostrarProducto');
+Route:: post('productos', 'ProductoController@guardarProducto');
+Route:: delete('productos', 'ProductoController@borrarProducto');
+Route:: put('productos', 'ProductoController@modificarProducto');
 
 //routes tipo_sucrusal
 Route:: get('tipos_sucursales', 'TipoSucursalController@mostrarTipoSucursal');

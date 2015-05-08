@@ -18,6 +18,26 @@ class ProductoController extends BaseController {
   }
   
   /*
+  * Description: Mostrar informacion de un producto especifico
+  * Method: GET
+  * Return: JSON
+  */
+  public function mostrarProducto() {
+  
+    try {
+    
+      if (Input::has('id')) {
+      
+        $producto = Producto::findOrFail(Input::get('id'));
+        return $producto;
+      }
+    } catch(Exception $e) {
+    
+      return Utils::enviarRespuesta('Exception', $e->getMessage(), 500);
+    }
+  }
+  
+  /*
   * Description: Insertar nuevo producto en BD
   * Method: POST
   * Return: JSON
@@ -28,32 +48,28 @@ class ProductoController extends BaseController {
       $producto = new Producto;
 
       if (Input::has('codigo_producto') && Input::has('nombre_producto') &&
-          Input::has('medida_producto') && Input::has('medida_producto') && ) {
+          Input::has('medida_producto') && Input::has('cantidad_producto') && 
+          Input::has('precio_neto_producto') && Input::has('precio_venta_producto')&&
+          Input::has('id_marca_producto') ) {
         
-        $producto->nombre_usuarios = Input::get('nombres');
-        $producto->apellido_usuarios = Input::get('apellidos');
-        $producto->login_usuarios = Input::get('usuario');
-        $producto->password_usuarios = Input::get('contrasena');
-        $producto->tipo_usuarios = Input::get('tipo_usuarios');
+        $producto->codigo_producto = Input::get('codigo_producto');
+        $producto->nombre_producto = Input::get('nombre_producto');
+        $producto->medida_producto = Input::get('medida_producto');
+        $producto->cantidad_producto = Input::get('cantidad_producto');
+        $producto->precio_neto_producto = Input::get('precio_neto_producto');
+        $producto->precio_venta_producto = Input::get('precio_venta_producto');
         
-        if (Input::has('ci')) {
-        
-          $usuario->ci_usuarios = Input::get('ci');
-        }
-        
-        if (Input::has('telefono')) {
-        
-          $usuario->telefono_usuarios = Input::get('telefono');
-        }
+        $marca = MarcaProducto::findOrFail(Input::get('id_marca_producto'));
+        $producto->id_marca_producto = $marca->id;
 
-        $usuario-> timestamps = false;
-        $usuario ->save();
+        $producto-> timestamps = false;
+        $producto ->save();
         
-        return $usuario;
+        return $producto;
 
       } else {
       
-        $mensaje = 'Los campos \'nombres\', \'usuario\' y \'contrasena\' son requeridos.';
+        $mensaje = 'Los campos \'codigo\', \'nombre\', \'medida\', \'cantidad\', \'cantidad\', \'precio neto\' y \'precio venta\' son requeridos.';
         return Utils::enviarRespuesta('Datos incompletos', $mensaje, 500);
       }
     } catch(Exception $e) {
@@ -63,21 +79,21 @@ class ProductoController extends BaseController {
   }
 
   /*
-  * Description: Eliminar un usuario de BD
+  * Description: Eliminar un producto de BD
   * Method: DELETE
   * Return: JSON
   */
-  public function borrarUsuario() {
+  public function borrarProducto() {
     
     try {
     
       if (Input::has('id')) {
     
-        $usuario = Usuario::findOrFail(Input::get('id'));
+        $producto = Producto::findOrFail(Input::get('id'));
 
-        $usuario->delete();
+        $producto->delete();
       
-        $mensaje = 'Usuario con ID: '.Input::get('id').' eliminado';
+        $mensaje = 'Producto con ID: '.Input::get('id').' eliminado';
         return Utils::enviarRespuesta('OK', $mensaje, 200);
       } else {
       
@@ -91,29 +107,29 @@ class ProductoController extends BaseController {
   }
 
   /*
-  * Description: Modificar un usuario de BD
+  * Description: Modificar un producto de BD
   * Method: PUT
   * Return: JSON
   */
-  public function modificarUsuario() {
+  public function modificarProducto() {
     try {
     
       if (Input::has('id')) {
     
-        $usuario = Usuario::findOrFail(Input::get('id'));
+        $producto = Producto::findOrFail(Input::get('id'));
 
-        $usuario->nombre_usuarios = Input::get('nombres', $usuario->nombre_usuarios);
-        $usuario->apellido_usuarios = Input::get('apellidos', $usuario->apellido_usuarios);
-        $usuario->login_usuarios = Input::get('usuario', $usuario->login_usuarios);
-        $usuario->password_usuarios = Input::get('contrasena', $usuario->password_usuarios);
-        $usuario->ci_usuarios = Input::get('ci', $usuario->ci_usuarios);
-        $usuario->telefono_usuarios = Input::get('telefono', $usuario->telefono_usuarios);
-        $usuario->tipo_usuarios = Input::get('tipo_usuarios', $usuario->tipo_usuarios);
-        $usuario->timestamps = false;
+        $producto->codigo_producto = Input::get('codigo_producto', $producto->codigo_producto);
+        $producto->nombre_producto = Input::get('nombre_producto', $producto->nombre_producto);
+        $producto->medida_producto = Input::get('medida_producto', $producto->medida_producto);
+        $producto->cantidad_producto = Input::get('cantidad_producto', $producto->cantidad_producto);
+        $producto->precio_neto_producto = Input::get('precio_neto_producto', $producto->precio_neto_producto);
+        $producto->precio_venta_producto = Input::get('precio_venta_producto', $producto->precio_venta_producto);
+        $producto->id_marca_producto = Input::get('id_marca_producto', $producto->id_marca_producto);
+        
+        $producto->timestamps = false;
+        $producto-> save();
 
-        $usuario-> save();
-
-        return $usuario;
+        return $producto;
       } else {
       
         $mensaje = 'El campo \'id\' es requerido.';

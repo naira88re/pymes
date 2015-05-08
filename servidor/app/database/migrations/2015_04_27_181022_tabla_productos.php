@@ -16,7 +16,7 @@ class TablaProductos extends Migration {
         
           $table->increments('id');
           $table->string('codigo_producto');
-          $table->integer('nombre_producto');
+          $table->string('nombre_producto');
           $table->string('medida_producto');
           $table->float('cantidad_producto');
           $table->float('precio_neto_producto');

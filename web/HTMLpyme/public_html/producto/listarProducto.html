@@ -13,9 +13,21 @@
             <div class="alert alert-success" role="alert" >Producto eliminado con exito!</div>
             <div class="alert alert-danger" role="alert" >Ocurrio un error, al eliminar producto.</div>
              <form>
-               <div id="divListaProductos">
-                 <ol id="listaProductos"></ol>
-               </div>
+               <!--Tabla de productos-->
+            <table class="table table-hover table-striped table-condensed">
+                <thead>
+                  <tr class="success">
+                    <th></th> <!-- Campo reservado para checkbox -->
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Medida</th>
+                    <th>Precio Compra</th>
+                    <th>Precio Venta</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
                <a data-toggle="modal" href="#modalEliminarProducto" class="btn btn-info btn-lg btn-block">ELIMINAR</a>
              </form>
             </div>

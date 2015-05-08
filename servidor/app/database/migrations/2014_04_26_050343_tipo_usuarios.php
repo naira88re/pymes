@@ -12,7 +12,7 @@ class TipoUsuarios extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tipo_usuarios',function($table)
+		Schema::create('tipos_usuarios',function($table)
         {                
           $table->increments('id');
           $table->string('tipo_usuario');
@@ -26,7 +26,7 @@ class TipoUsuarios extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('tipo_usuarios');
+		Schema::dropIfExists('tipos_usuarios');
 	}
 
 }
