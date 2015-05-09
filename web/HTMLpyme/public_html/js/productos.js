@@ -1,4 +1,4 @@
-var URLSERVER = 'http://localhost/pymes/public/';
+var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
 
 function initRegistrarProducto() {
   
