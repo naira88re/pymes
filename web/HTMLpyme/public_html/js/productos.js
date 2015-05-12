@@ -33,14 +33,15 @@ function cargarListaProductos() {
       var producto = data[index];
       html += 
         "<tr>" + 
-        "<td><input name=\"productos[]\" value=\"" + producto.id + "\" type=\"checkbox\" /></td>" + 
-        "<td><a href=\"modificarProducto.html?id=" + producto.id + 
-        "\">" + producto.codigo_producto + "</a></td>" +
-        "<td>" + producto.nombre_producto + "</td>" +
-        "<td>" + producto.cantidad_producto + "</td>" +
-        "<td>" + producto.medida_producto + "</td>" +
-        "<td>" + producto.precio_neto_producto + "</td>" +
-        "<td>" + producto.precio_venta_producto + "</td>" +
+        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.codigo_producto + " \" /> " +
+        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.id_marca_producto + " \" /> </td>"+
+        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.nombre_producto + " \" /> </td>" +
+        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.cantidad_producto + " \"/> </td>" +
+        "<td><input class=\"form-control\" type=\"text\" value=\"" + producto.medida_producto + " \" /></td>" +
+        "<td> <input class=\"form-control\" type=\"tel\" value=\"" + producto.precio_neto_producto +" \" /></td>" +
+        "<td> <input class=\"form-control\" type=\"tel\" value=\"" + producto.precio_venta_producto +" \" /></td>" +
+        "<td><a data-toggle=\"modal\" href=\"#modalEliminarProducto\" class=\"btn btn-info btn-lg btn-block\"><span class=\"glyphicon glyphicon-trash\"> </span></a></td>" + 
+        "<td><span class=\"glyphicon glyphicon-floppy-disk\"></pan></td>" +
         "</tr>";
     };
     
