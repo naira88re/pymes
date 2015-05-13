@@ -1,5 +1,5 @@
-//var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
-var URLSERVER = 'http://localhost/pymes/public/';
+var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
+//var URLSERVER = 'http://localhost/pymes/public/';
 
 function initRegistrarUsuarios() {
   
