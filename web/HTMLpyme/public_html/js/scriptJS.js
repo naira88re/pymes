@@ -91,7 +91,9 @@ function cargarListaUsuarios() {
         usuario.id + "\" type=\"checkbox\" /> <a href=\"modificarUsuarios.html?id="+ 
         usuario.id + "\">" + 
         usuario.nombre_usuario + 
-        " " + usuario.apellido_usuario + " </a></li>";
+        " " + usuario.apellido_usuario + " </a> " +
+        usuario.id+
+        "</li>";
     };
     
     $('#listaUsuarios').html(html);
