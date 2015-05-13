@@ -1,4 +1,5 @@
-var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
+//var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
+var URLSERVER = 'http://localhost/pymes/public/';
 
 function initRegistrarUsuarios() {
   
@@ -23,6 +24,20 @@ function ocultarMensajes() {
   $(".alert-success").hide();
   $(".alert-danger").hide();
 }
+
+function autenticar() {
+
+  datos = {
+  
+    'nombreUsuario': $('#nombreUsuario').val(),
+    'contrasena': $('#password').val()
+  };
+  
+  operacionServidor("autenticar", "POST", datos);
+  $('#nombreUsuario').val('');
+  $('#password').val('');
+}
+
 
 function crearUsuario() {
 
