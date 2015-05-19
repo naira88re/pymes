@@ -4,18 +4,22 @@
         <title>Login</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
-    <body>
-        <div class="panel panel-info">
-       <div class="panel-heading">
-         <h3 class="panel-title">BIENVENIDOS A PyMES</h3>
-       </div>
-    <div class="panel-body">
-        <form action="">
-        <input type="text" class="form-control" name="nombreUsuario" placeholder="Usuario">
-        <input type="text" class="form-control" name="password" placeholder="Contrase&ntilde;a">
-           <button type="button" class="btn btn-info btn-lg btn-block">INGRESA A TU CUENTA</button>
-        </form>        
-    </div>
-    </div>
-    </body>
+    <body onload="ocultarMensajes()">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">BIENVENIDOS A PyMES</h3>
+        </div>
+        <div class="panel-body">
+          <form action="">
+            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Usuario">
+            <input type="text" class="form-control" id="password" name="password" placeholder="Contrase&ntilde;a">
+            <button type="button" class="btn btn-info btn-lg btn-block" onclick="autenticar()">INGRESA A TU CUENTA</button>
+          </form>        
+        </div>
+      </div>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/scriptJS.js"></script>
+  </body>
 </html>
+
