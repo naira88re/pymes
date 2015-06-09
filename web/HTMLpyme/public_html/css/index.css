@@ -1,0 +1,9 @@
+.nav-menu-item {
+
+  right: 120px;
+}
+
+.nav-menu-left {
+    
+    margin-left: -100px !important;
+}

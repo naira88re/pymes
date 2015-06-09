@@ -1,37 +1,24 @@
-<!--<!DOCTYPE html>
-<html>
-  <head>
-    <title>Resgistrar Usuario</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-  </head>
-  <body onload="initRegistrarUsuarios()">-->
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">REGISTRAR NUEVO USUARIO</h3>
-      </div>
-      <div class="panel-body">
-          
-          <div class="alert alert-success" role="alert" >Usuario registrado con exito!</div>
-          <div class="alert alert-danger" role="alert" >Ocurrio un error, verifique sus datos.</div>
-          <form action="http://localhost/pymes/public/usuarios" method="post">
-              <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre">            
-              <input type="text" class="form-control" id="apellidos" name="apellido" placeholder="Apellido">  
-              <input type="text" class="form-control" id="login" name="login" placeholder="Nombre de Usuario">
-              <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contrase&ntilde;a">
-              <input type="password" class="form-control" id="repetirContrasena" name="repetirContrasena" placeholder="Repetir Contrase&ntilde;a">
-              <input type="text" class="form-control" id="ci" name="ci" placeholder="Numero de Carnet">
-              <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
-            
-              <div class="divTipo">
-                <select class="form-control" id="tipos"></select>
-              </div>
-              <!--<button type="submit" class="btn btn-info btn-lg btn-block">REGISTRAR</button>-->
-              <button type="button" onclick="crearUsuario()" class="btn btn-info btn-lg btn-block">REGISTRAR</button>
-            </form>
-      </div>
-    </div>
-    <script src="../js/scriptJS.js"></script>
-    <script src="../js/jquery.min.js"></script>
- <!-- </body>
-  </html>-->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">REGISTRAR NUEVO USUARIO</h3>
+  </div>
+  <div class="panel-body">
+    <div class="alert alert-success" role="alert" >Usuario registrado con exito!</div>
+    <div class="alert alert-danger" role="alert" >Ocurrio un error, verifique sus datos.</div>
+    <form onload="initRegistrarProducto()">
+        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre">            
+        <input type="text" class="form-control" id="apellidos" name="apellido" placeholder="Apellido">  
+        <input type="text" class="form-control" id="login" name="login" placeholder="Nombre de Usuario">
+        <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contrase&ntilde;a">
+        <input type="password" class="form-control" id="repetirContrasena" name="repetirContrasena" placeholder="Repetir Contrase&ntilde;a">
+        <input type="text" class="form-control" id="ci" name="ci" placeholder="Numero de Carnet">
+        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
+
+        <div class="divTipo">
+          <select class="form-control" id="tipos"></select>
+        </div>
+        <button type="button" onclick="crearUsuario()" class="btn btn-info btn-lg btn-block">REGISTRAR</button>
+    </form>
+  </div>
+</div>
             

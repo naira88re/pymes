@@ -1,42 +1,22 @@
 <!DOCTYPE html>
-<!--
--->
 <html>
-    <head>
-        <title>index</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Inicio</a>
-    </div>
+  <head>
+      <title>index</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/default.css">
+      <link rel="stylesheet" href="css/component.css">
+      <link rel="stylesheet" href="css/index.css">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-        <a href="producto/registrarProducto.html">Registrar Producto</a><br>
-        <a href="producto/listarProducto.html">Listar Producto</a><br>
-        <a href="producto/modificarProducto.html">Modificar Producto</a><br>
-        <a href="usuario/registrarUsuarios.html">Registrar Usuarios</a><br>
-        <a href="usuario/listarUsuarios.html">Listar Usuarios</a><br>
-        <a href="usuario/modificarUsuarios.html">Listar Usuarios</a><br>
-        <a href="venta/buscarProducto.html">Buscar Producto en venta</a><br>
-        <a href="venta/ventas.html">Ventas</a><br>
-        <a href="login.html">Login </a>
-        
-        
-        <script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-    </body>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/modernizr.custom.js"></script>
+      <script src="js/jquery.dlmenu.js"></script>
+      <script src="js/productos.js"></script>
+      <script src="js/usuarios.js"></script>
+      <script src="js/scriptJS.js"></script>
+  </head>
+  <body onload="cargarPaginaPrincipal()">
+    <nav class="navbar navbar-default"></nav>
+    <div id="contenedor_principal"></div>
+  </body>
 </html>

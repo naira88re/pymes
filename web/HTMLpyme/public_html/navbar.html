@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <div class="navbar-header">
+    <div id="dl-menu" class="dl-menuwrapper">
+     <button class="dl-trigger">Open Menu</button>
+     <ul class="dl-menu">
+        <li>
+          <a href="#">Productos</a>
+          <ul class="dl-submenu">
+            <li><a href="#" onclick="cargarPagina(this)" id="registrarProducto">Registrar</a></li>
+            <li><a href="#" id="listarProducto">Listar</a></li>
+            <li><a href="#" id="buscarProducto">Buscar</a></li>
+            <li>
+              <a href="#">Reportes</a>
+              <ul class="dl-submenu">
+                  <li><a href="#">Productos Vendidos</a></li>
+                  <li><a href="#">Productos Comprados</a></li>
+                  <li><a href="#">Productos Vencidos</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Usuarios</a>
+          <ul class="dl-submenu">
+              <li><a href="#" id="registrarUsuario">Registrar</a></li>
+              <li><a href="#" id="listarUsuario">Listar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Ventas</a>
+          <ul class="dl-submenu">
+              <li><a href="#" id="registrarVenta">Registrar</a></li>
+              <li><a href="#" id="listarVenta">Listar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="·">Carrito</a>
+          <ul class="dl-submenu">
+              <li><a href="#">Mostrar</a></li>
+            
+          </ul>
+        </li>
+     </ul>
+    </div><!-- /dl-menuwrapper --> 
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav nav-menu-left">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Compras</a></li>
+      <li><a href="#">Ventas</a></li>
+      <li><a href="#">Sincronizar</a></li>
+      <li><a href="#">Salir</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+<script>
+
+// Activamos los menus
+  $( '#dl-menu' ).dlmenu({animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }});
+
+// Menu productos
+  $("#registrarProducto").click(function(event) {
+    $("#contenedor_principal").load('producto/registrarProducto.html');
+  });
+
+  $("#listarProducto").click(function(event) {
+      $("#contenedor_principal").load('producto/listarProducto.html');
+      //$('#dl-menu').dlmenu('closeMenu');
+  });
+
+  $("#buscarProducto").click(function(event) {
+      $("#contenedor_principal").load('producto/buscarProducto.html');
+      //$('#dl-menu').dlmenu('closeMenu');
+  });
+
+// Menu usuarios
+  $("#registrarUsuario").click(function(event) {
+      $("#contenedor_principal").load('usuario/registrarUsuarios.html');
+      //$('#dl-menu').dlmenu('closeMenu');
+  });
+
+  $("#listarUsuario").click(function(event) {
+      $("#contenedor_principal").load('usuario/listarUsuarios.html');
+      //$('#dl-menu').dlmenu('closeMenu');
+  });
+
+  $("#listarUsuario").click(function(event) {
+      $("#contenedor_principal").load('usuario/listarUsuarios.html');
+      //$('#dl-menu').dlmenu('closeMenu');
+  });
+ 
+// Menu ventas
+  $("#registrarVenta").click(function(event) {
+      $("#contenedor_principal").load('venta/ventas.html');
+      //$('#dl-menu').dlmenu('closeMenu');
+  });
+
+</script>
