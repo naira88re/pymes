@@ -6,9 +6,9 @@
         <li>
           <a href="#">Productos</a>
           <ul class="dl-submenu">
-            <li><a href="#" onclick="cargarPagina(this)" id="registrarProducto">Registrar</a></li>
-            <li><a href="#" id="listarProducto">Listar</a></li>
-            <li><a href="#" id="buscarProducto">Buscar</a></li>
+            <li><a href="#" onclick="activarItem('producto/registrarProducto.html');">Registrar</a></li>
+            <li><a href="#" onclick="activarItem('producto/listarProducto.html');">Listar</a></li>
+            <li><a href="#" onclick="activarItem('producto/buscarProducto.html');">Buscar</a></li>
             <li>
               <a href="#">Reportes</a>
               <ul class="dl-submenu">
@@ -22,14 +22,14 @@
         <li>
           <a href="#">Usuarios</a>
           <ul class="dl-submenu">
-              <li><a href="#" id="registrarUsuario">Registrar</a></li>
-              <li><a href="#" id="listarUsuario">Listar</a></li>
+            <li><a href="#" onclick="activarItem('usuario/registrarUsuarios.html');">Registrar</a></li>
+            <li><a href="#" onclick="activarItem('usuario/listarUsuarios.html');">Listar</a></li>
           </ul>
         </li>
         <li>
           <a href="#">Ventas</a>
           <ul class="dl-submenu">
-              <li><a href="#" id="registrarVenta">Registrar</a></li>
+            <li><a href="#" onclick="activarItem('venta/ventas.html');">Registrar</a></li>
               <li><a href="#" id="listarVenta">Listar</a></li>
           </ul>
         </li>
@@ -53,46 +53,8 @@
     </ul>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
+
 <script>
-
-// Activamos los menus
+  // Activamos el boton menu
   $( '#dl-menu' ).dlmenu({animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }});
-
-// Menu productos
-  $("#registrarProducto").click(function(event) {
-    $("#contenedor_principal").load('producto/registrarProducto.html');
-  });
-
-  $("#listarProducto").click(function(event) {
-      $("#contenedor_principal").load('producto/listarProducto.html');
-      //$('#dl-menu').dlmenu('closeMenu');
-  });
-
-  $("#buscarProducto").click(function(event) {
-      $("#contenedor_principal").load('producto/buscarProducto.html');
-      //$('#dl-menu').dlmenu('closeMenu');
-  });
-
-// Menu usuarios
-  $("#registrarUsuario").click(function(event) {
-      $("#contenedor_principal").load('usuario/registrarUsuarios.html');
-      //$('#dl-menu').dlmenu('closeMenu');
-  });
-
-  $("#listarUsuario").click(function(event) {
-      $("#contenedor_principal").load('usuario/listarUsuarios.html');
-      //$('#dl-menu').dlmenu('closeMenu');
-  });
-
-  $("#listarUsuario").click(function(event) {
-      $("#contenedor_principal").load('usuario/listarUsuarios.html');
-      //$('#dl-menu').dlmenu('closeMenu');
-  });
- 
-// Menu ventas
-  $("#registrarVenta").click(function(event) {
-      $("#contenedor_principal").load('venta/ventas.html');
-      //$('#dl-menu').dlmenu('closeMenu');
-  });
-
 </script>
