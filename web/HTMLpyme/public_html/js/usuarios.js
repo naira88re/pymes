@@ -219,15 +219,15 @@ function operacionServidor(ruta, tipo, datos) {
       async: false,
       success: function (datos) {
         console.log(datos);
-        $(".alert-success").show("slow");
-        $(".alert-danger").hide();
+        if (datos.mensaje !== undefined ) {
+          mostrarAlerta('OK', datos.mensaje);
+        }
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log(xhr.status);
         console.log(xhr.responseText);
 
-        $(".alert-danger").show("slow");
-        $(".alert-success").hide(); 
+        mostrarAlerta('ERROR', xhr.responseText);
       }
     });
 }

@@ -160,15 +160,12 @@ function operacionServidor(ruta, tipo, datos) {
       async: false,
       success: function (datos) {
         console.log(datos);
-        $(".alert-success").show("slow");
-        $(".alert-danger").hide();
+        mostrarAlerta('OK', 'Operacion realizada con exito!');
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log(xhr.status);
         console.log(xhr.responseText);
-
-        $(".alert-danger").show("slow");
-        $(".alert-success").hide(); 
+        mostrarAlerta('ERROR', 'Ocurrio un error, porfavor consulte con el administrador.');
       }
     });
 }
