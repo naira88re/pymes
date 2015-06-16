@@ -220,14 +220,14 @@ function operacionServidor(ruta, tipo, datos) {
       success: function (datos) {
         console.log(datos);
         if (datos.mensaje !== undefined ) {
-          mostrarAlerta('OK', datos.mensaje);
+          mostrarAlerta('OK', 'Operacion realizada con exito!');
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log(xhr.status);
         console.log(xhr.responseText);
 
-        mostrarAlerta('ERROR', xhr.responseText);
+        mostrarAlerta('ERROR', 'Ocurrio un error, porfavor consulte con el administrador.');
       }
     });
 }
