@@ -11,6 +11,18 @@ function cargarPaginaPrincipal() {
     $(".navbar").load('navbar.html');
     $("#contenedor_principal").load('login.html');
   });
+  
+  // Agregamos el evento para mostrar el gif de espera
+  $(document).ajaxStart(function() {
+
+    $(".se-pre-con").show();
+  });
+  
+  // Agregamos el evento para ocultar lentamente el gif de espera
+  $(document).ajaxStop(function() {
+
+    $(".se-pre-con").fadeOut("slow");
+  });
 }
 
 /**
@@ -25,6 +37,14 @@ function activarItem(ruta) {
   $('#dl-menu').dlmenu('closeMenu');
 }
 
+/**
+ * Esta funcion buscara el elemento alert-message 
+ * dependiendo de los parametros enviados se mostrara un 
+ * un mensaje satisfactorio o de error
+ * @param {string} tipo
+ * @param {string} texto
+ * @returns 
+ */
 function mostrarAlerta(tipo, texto) {
 
   var item = $('#alert-message');

@@ -1,22 +1,23 @@
 
 <div class="panel panel-info">
-   <div class="panel-heading">
-         <h3 class="panel-title">MODIFICAR DATOS DE UN PRODUCTO</h3>
-   </div>
-   <div class="panel-body">
-       <form action="">
-        <input type="hidden" id="id" />
-        <input type="text"  id="codigo" class="form-control" name="mCodigoProduco" >
-        <input type="text" id="nombre" class="form-control" name="mNombreProducto" >
-         <input type="text" id="medida" class="form-control" name="mMedidaProducto" >
-        <input type="text" id="cantidad" class="form-control" name="mCantidadContenido">
-        <input type="number" id="compra" class="form-control" name="mPrecioCompra">
-        <input type="number" id="venta" class="form-control" name="mPrecioVenta" >
-         <input type="text" id="marca" data-id-marca="" class="form-control" name="marca" />
-         <!--<button type="button" class="btn btn-info btn-lg btn-block">MODIFICAR</button>-->
-         <a data-toggle="modal" href="#modalModificarProducto" class="btn btn-info btn-lg btn-block">Modificar</a>
-       </form>
-   </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">MODIFICAR DATOS DE UN PRODUCTO</h3>
+  </div>
+  <div class="panel-body">
+    <div id="alert-message"></div>
+    <form action="">
+      <input type="hidden" id="id" />
+      <input type="text"  id="codigo" class="form-control" name="mCodigoProduco" >
+      <input type="text" id="nombre" class="form-control" name="mNombreProducto" >
+      <input type="text" id="medida" class="form-control" name="mMedidaProducto" >
+      <input type="text" id="cantidad" class="form-control" name="mCantidadContenido">
+      <input type="number" id="compra" class="form-control" name="mPrecioCompra">
+      <input type="number" id="venta" class="form-control" name="mPrecioVenta" >
+      <input type="text" id="marca" data-id-marca="" class="form-control" name="marca" />
+       <!--<button type="button" class="btn btn-info btn-lg btn-block">MODIFICAR</button>-->
+      <a data-toggle="modal" href="#modalModificarProducto" class="btn btn-info btn-lg btn-block">Modificar</a>
+    </form>
+  </div>
 </div>
 
 <!-- Modal -->
