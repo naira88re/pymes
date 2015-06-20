@@ -1,16 +1,17 @@
 
-<div class="panel panel-info" onload="initRegistrarEmpresa()">
+<div class="panel panel-info">
     
   <div class="panel-heading">
     <h3 class="panel-title">REGISTRAR PROVEEDORES</h3>
   </div>
+    <div><h3 class="textoVino">PASO 1</h3></div>
   <div class="panel-body">
     <form>
-        <input type="text"  class="form-control" id="#" name="nombre Empresa" placeholder="Nombre de la Empresa">
-        <input type="text" class="form-control" name="direccion empresa" placeholder="Direccion">
-        <input type="text" class="form-control" id="#" name="telefono oficina" placeholder="Telefono de la Oficina">
+        <input type="text"  class="form-control" id="nombreEmpresa" name="nombreEmpresa" placeholder="Nombre de la Empresa">
+        <input type="text" class="form-control" id="direccionEmpresa" name="direccionEmpresa" placeholder="Direccion">
+        <input type="text" class="form-control" id="telefonoEmpresa" name="telefonoEmpresa" placeholder="Telefono de la Oficina">
         
-        <button type="button" class="btn btn-info btn-lg btn-block">Siguiente</button>
+        <button type="button" onclick="irRegistrarVendedor()" class="btn btn-info btn-lg btn-block">Siguiente</button>
     </form>
   </div>
 
