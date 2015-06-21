@@ -63,3 +63,58 @@ function mostrarAlerta(tipo, texto) {
   item.html(texto);
   item.show("slow");
 }
+
+/**
+ * Funcion que permite enviar datos hacia el servidor
+ * basandose en el tipo de solicitud enviada
+ * 
+ * @param {string} ruta
+ * @param {string} tipo
+ * @param {string} datos
+ * @returns 
+ */
+function operacionServidor(ruta, tipo, datos) {
+
+  $.ajax({
+      url: URLSERVER + ruta,
+      type: tipo,
+      dataType: 'json',
+      data: JSON.stringify(datos),
+      processData: false,
+      contentType: 'application/json',
+      CrossDomain:true,
+      async: false,
+      success: function (datos) {
+        console.log(datos);
+        if (datos.mensaje !== undefined ) {
+          mostrarAlerta('OK', 'Operacion realizada con exito!');
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(xhr.status);
+        console.log(xhr.responseText);
+
+        mostrarAlerta('ERROR', 'Ocurrio un error, porfavor consulte con el administrador.');
+      }
+    });
+}
+
+/**
+ * Funcion que nos permite obtener los parametros de una 
+ * direccion URL
+ * @param {string} sParam
+ * @returns {getUrlParameter.sParameterName}
+ */
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}

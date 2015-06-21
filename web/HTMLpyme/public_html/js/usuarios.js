@@ -18,7 +18,6 @@ function initRegistrarUsuarios() {
  */
 function initListaUsuarios() {
 
-  ocultarMensajes();
   cargarListaUsuarios();
 }
 
@@ -101,11 +100,10 @@ function cargarListaUsuarios() {
 
       var usuario = data[index];
       html += "<li> <input name=\"usuarios[]\" value=\" " + 
-        usuario.id + "\" type=\"checkbox\" /> <a href=\"modificarUsuarios.html?id="+ 
-        usuario.id + "\">" + 
+        usuario.id + "\" type=\"checkbox\" /> <a href=\"\" onclick=\"activarItem(usuario/modificarUsuarios.html?id="+ 
+        usuario.id + ")\">" + 
         usuario.nombre_usuario + 
         " " + usuario.apellido_usuario + " </a> " +
-        usuario.id+
         "</li>";
     };
     
