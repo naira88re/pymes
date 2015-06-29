@@ -5,56 +5,36 @@ function initRegistrarProducto() {
     autoCompletarMarca();
 }
 
-function initListarProductos() {
-  
-    ocultarMensajes();
-    cargarListaProductos();
-}
-
 function initModificarProducto() {
 
-  ocultarMensajes();
   cargarProducto();
 }
 
 function autoCompletarMarca() {
 
-//  var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-//  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-//  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-//  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-//  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-//  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-//  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-//  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-//  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-//];
-//
-//  $('#autocomplete-marca .typeahead').typeahead({
-//    hint: true,
-//    highlight: true,
-//    minLength: 1
-//  },
-//  {
-//    name: 'states',
-//    source: substringMatcher(states)
-//  });
+  $.get( URLSERVER + "marcas_productos", function( data ) {
 
-  var marcas = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: URLSERVER + "marcas_productos",
-    remote: {
-      url: URLSERVER + "marcas_productos"
+    var values = [];
+    var index = 0;
+    for (index in data) {
+
+      values[index] = { 
+        id: data[index].id, 
+        text: data[index].nombre_marca_producto
+      };
     }
-  });
-  
-  console.log(marcas);
 
-  $('#autocomplete-marca .typeahead').typeahead(null, {
-    name: 'best-pictures',
-    display: 'nombre_marca_producto',
-    source: marcas
+    $('#marca').selectivity({
+        allowClear: true,
+        items: values,
+        placeholder: 'Marca Producto'
+    });
+
+    $('#marca').on('selectivity-selected', function(selection) {
+
+      $(this).val(selection.item.text);
+      $('#idMarca').val(selection.item.id);
+    });
   });
 }
 
@@ -105,7 +85,7 @@ function crearProducto() {
     'cantidad_producto': $('#cantidad').val(),
     'precio_neto_producto': $('#compra').val(),
     'precio_venta_producto': $('#venta').val(),
-    'id_marca_producto': 1
+    'id_marca_producto': $('#idMarca').val()
   };
   
   operacionServidor("productos", "POST", datos);
@@ -116,6 +96,8 @@ function crearProducto() {
   $('#cantidad').val('');
   $('#venta').val('');
   $('#compra').val('');
+  $('#marca').val('');
+  $('#idMarca').val('');
 }
 
 function modificarProducto() {

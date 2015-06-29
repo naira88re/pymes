@@ -34,12 +34,12 @@ body, html { font-size: 100%; 	padding: 0; margin: 0;}
 	clear: both;
 }
 
-body {
+/*body {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 	color: #b1aea6;
 	background: #fffcf5;
 	min-height: 800px;
-}
+}*/
 
 a {
 	color: #ccc;
