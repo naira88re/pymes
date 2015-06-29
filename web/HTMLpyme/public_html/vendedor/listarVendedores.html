@@ -1,0 +1,129 @@
+    <div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">LISTA DE VENDEDORES</h3>
+  </div>
+  <div class="panel-body">
+    <!--<div id="alert-message"></div>-->
+    <!--<ol id="listaVendedores"></ol>-->
+    <form>
+        <!--Tabla de vendedores-->
+     <table class="table table-hover table-striped table-condensed">
+         <thead>
+           <tr class="success">
+             <th>Nombre</th>
+             <th>Celular</th>
+             <th>Empresa</th>
+             <th></th>
+           </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>
+                     <a data-toggle="modal" href="#modalEditarVendedor" class="btn btn-info btn-lg btn-block">Editar</a>
+           <a data-toggle="modal" href="#modalEliminarVendedor" class="btn btn-info btn-lg btn-block">EliminarVendedor</a>
+           <a data-toggle="modal" href="#modalEliminarEmpresa" class="btn btn-info btn-lg btn-block">EliminarEmpresa</a>
+           <a data-toggle="modal" href="#modalEditarEmpresa" class="btn btn-info btn-lg btn-block">EditarEmpresa</a>
+                 </td>
+                  
+             </tr>
+          
+         </tbody>
+     </table>
+
+      </form>
+  </div>
+</div> 
+
+
+
+
+<!-- Modal Editar Vendedor -->
+<div class="modal fade" id="modalEditarVendedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editar Vendedor</h4>
+      </div>
+      <div class="modal-body">
+         <form>
+      Nombre:  <input type="text"  class="form-control" id="nombreVendeddor" name="nombreVendedor">
+      Celular: <input type="text" class="form-control" name="celularVendedor">
+         </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Si</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal Eliminar vendedor -->
+<div class="modal fade" id="modalEliminarVendedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">ELIMINAR VENDEDOR</h4>
+      </div>
+      <div class="modal-body">
+      ¿Esta seguro que desea eliminar toda la informaci&oacuten? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
+<!--ModalEliminar Empresa-->
+<div class="modal fade" id="modalEliminarEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">ELIMINAR EMPRESA</h4>
+      </div>
+      <div class="modal-body">
+      ¿Esta seguro que desea eliminar todos los datos de empresa ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
+<!--Modal Editar Empresa-->
+<div class="modal fade" id="modalEditarEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">MODIFICAR EMPRESA</h4>
+      </div>
+      <div class="modal-body">
+      <form>
+      Nombre:  <input type="text"  class="form-control" id="nombreEmpresa" name="nombreEmpresa">
+      Telefono: <input type="text" class="form-control" name="telefonoEmpresa">
+      Direcci&oacute;n: <input type="text" class="form-control" name="direccionEmpresa">
+         </form>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div> 

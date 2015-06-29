@@ -50,3 +50,42 @@ function operacionServidor(ruta, tipo, datos) {
       }
     });
 }
+
+function cargarListaEmpresas(){
+    $.get( URLSERVER + "empresas", function( data ) {
+    var html = "";
+    var htmlVendedor = "";
+    console.log(data);
+     
+    
+    //for(index in data) {
+        
+        htmlVendedor += "<table><tr><td>Vendedor</td></tr></table>";
+    //}
+    
+    for(index in data) {
+
+      var empresa = data[index];
+ 
+      
+ 
+    html+= "<div class=\"panel panel-default\">"+
+    "<div class=\"panel-heading\" role=\"tab\" id=\"heading"+empresa.id+"\">"+
+     " <h4 class=\"panel-title\">"+
+        "<a class=\"collapsed\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#listaEmpresas\" href=\"#collapse" + empresa.id +"\" aria-expanded=\"false\" aria-controls=\"collapse"+empresa.id+"\">"+
+          empresa.nombre_empresa+
+        "</a>"+
+      "</h4>"+
+    "</div>"+
+    "<div id=\"collapse"+ empresa.id +"\"" + "class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading"+empresa.id+"\">"+
+      "<div class=\"panel-body\">"+
+        htmlVendedor+
+      "</div>"+
+    "</div>"+
+  "</div>";
+
+    };
+
+    $('#listaEmpresas').html(html);
+  });
+}
