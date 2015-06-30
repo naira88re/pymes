@@ -60,7 +60,33 @@ function cargarListaEmpresas(){
     
     //for(index in data) {
         
-        htmlVendedor += "<table><tr><td>Vendedor</td></tr></table>";
+        htmlVendedor += "<div>" + 
+                        "<h3 id=\"#\"></h3>" +
+                        "<h3 id=\"#\"></h3>" +
+                        "<h3 id=\"#\"></h3>" +
+                        "<button><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></button>" + 
+                        "<button><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></button>" +    
+                        "<!--tabla para cargar informacion de vendedores-->" +
+                        "<div>" +
+                        "<table class=\"table\">" +
+                        "<thead>" +
+                        "<tr class=\"success\">" +
+                        "<th>Vendedor</th>" +
+                        "<th>Celular</th>" +
+                        "<th></th>" +
+                        "</tr>" +
+                        "</thead>" +
+                        "<tbody>" +
+                        "<tr>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" + 
+                        "</tr>" +
+                        "</tbody>" +
+                        "</table>" +
+                        "<button><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></button>"+
+                        "</div>" +
+                        "</div>";
     //}
     
     for(index in data) {
