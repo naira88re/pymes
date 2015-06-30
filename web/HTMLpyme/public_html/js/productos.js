@@ -2,25 +2,40 @@ var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
 
 function initRegistrarProducto() {
   
-    ocultarMensajes();
-}
-
-function initListarProductos() {
-  
-    ocultarMensajes();
-    cargarListaProductos();
+    autoCompletarMarca();
 }
 
 function initModificarProducto() {
 
-  ocultarMensajes();
   cargarProducto();
 }
 
-function ocultarMensajes() {
+function autoCompletarMarca() {
 
-  $(".alert-success").hide();
-  $(".alert-danger").hide();
+  $.get( URLSERVER + "marcas_productos", function( data ) {
+
+    var values = [];
+    var index = 0;
+    for (index in data) {
+
+      values[index] = { 
+        id: data[index].id, 
+        text: data[index].nombre_marca_producto
+      };
+    }
+
+    $('#marca').selectivity({
+        allowClear: true,
+        items: values,
+        placeholder: 'Marca Producto'
+    });
+
+    $('#marca').on('selectivity-selected', function(selection) {
+
+      $(this).val(selection.item.text);
+      $('#idMarca').val(selection.item.id);
+    });
+  });
 }
 
 function cargarListaProductos() {
@@ -70,7 +85,7 @@ function crearProducto() {
     'cantidad_producto': $('#cantidad').val(),
     'precio_neto_producto': $('#compra').val(),
     'precio_venta_producto': $('#venta').val(),
-    'id_marca_producto': 1
+    'id_marca_producto': $('#idMarca').val()
   };
   
   operacionServidor("productos", "POST", datos);
@@ -81,6 +96,8 @@ function crearProducto() {
   $('#cantidad').val('');
   $('#venta').val('');
   $('#compra').val('');
+  $('#marca').val('');
+  $('#idMarca').val('');
 }
 
 function modificarProducto() {

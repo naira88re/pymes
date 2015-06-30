@@ -6,27 +6,31 @@
       <div id="alert-message"></div>
       <form>
         <!--Tabla de productos-->
-     <table class="table table-hover table-striped table-condensed">
-         <thead>
-           <tr class="success">
-             <th>Codigo</th>
-             <th>Marca</th>
-             <th>Nombre</th>
-             <th>Cantidad</th>
-             <th>Medida</th>
-             <th>Precio Compra</th>
-             <th>Precio Venta</th>
-             <th></th>
-             <th></th>
-           </tr>
-         </thead>
-         <tbody>
-         </tbody>
-     </table>
-
+        <table class="table table-hover table-striped table-condensed">
+            <thead>
+              <tr class="success">
+                <th>Codigo</th>
+                <th>Marca</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Medida</th>
+                <th>Precio Compra</th>
+                <th>Precio Venta</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
       </form>
      </div>
  </div>
+
+<!-- Cargamos los productos registrados en BD -->
+<script type="text/javascript">
+  cargarListaProductos();
+</script>
+
 <!-- Modal -->
 <div class="modal fade" id="modalEliminarProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

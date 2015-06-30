@@ -6,7 +6,8 @@
     <div id="alert-message"></div>
     <form>
         <input type="text"  class="form-control" id="codigo" name="codigo" placeholder="Codigo de Producto">
-        <input type="text" class="form-control" name="marca Producto" placeholder="Marca de producto">
+        <input type="hidden" id="idMarca">
+        <input type="text" class="form-control" id="marca" name="marca Producto" placeholder="Marca de producto">
         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de Producto">
         <input type="text" class="form-control" id="medida" name="medida" placeholder="Medida del Producto">
         <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad del Producto">
@@ -16,3 +17,8 @@
     </form>
   </div>
 </div>
+
+<!-- Cargamos las marcas de productos -->
+<script>
+  initRegistrarProducto();
+</script>
