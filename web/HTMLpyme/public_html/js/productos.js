@@ -1,15 +1,28 @@
-var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
-
+/**
+ * Funcion que utilizamos para inicializar 
+ * la pagina de registro de productos
+ * @returns 
+ */
 function initRegistrarProducto() {
   
     autoCompletarMarca();
 }
 
+/**
+ * Funcion que utilizamos para inicializar
+ * la pagina de modificar productos
+ * @returns
+ */
 function initModificarProducto() {
 
-  cargarProducto();
+  autoCompletarMarca();
 }
 
+/**
+ * Funcion que obtiene e inicializa las marcas
+ * para el respectivo registro productos
+ * @returns
+ */
 function autoCompletarMarca() {
 
   $.get( URLSERVER + "marcas_productos", function( data ) {
@@ -33,49 +46,84 @@ function autoCompletarMarca() {
     $('#marca').on('selectivity-selected', function(selection) {
 
       $(this).val(selection.item.text);
-      $('#idMarca').val(selection.item.id);
+      $('#marca').attr('data-id-marca', selection.item.id);
     });
   });
 }
 
+/**
+ * Funcion utilizada para obtener todos los productos
+ * de la base de datos
+ * @returns 
+ */
 function cargarListaProductos() {
 
   $.get( URLSERVER + "productos", function( data ) {
-    var html = "";
-    console.log(data);
-    for(index in data) {
 
-      var producto = data[index];
-      html += 
-        "<tr>" + 
-        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.codigo_producto + " \" /> " +
-        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.id_marca_producto + " \" /> </td>"+
-        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.nombre_producto + " \" /> </td>" +
-        "<td> <input class=\"form-control\" type=\"text\" value=\"" + producto.cantidad_producto + " \"/> </td>" +
-        "<td><input class=\"form-control\" type=\"text\" value=\"" + producto.medida_producto + " \" /></td>" +
-        "<td> <input class=\"form-control\" type=\"tel\" value=\"" + producto.precio_neto_producto +" \" /></td>" +
-        "<td> <input class=\"form-control\" type=\"tel\" value=\"" + producto.precio_venta_producto +" \" /></td>" +
-        "<td><a data-toggle=\"modal\" href=\"#modalEliminarProducto\" class=\"btn btn-info btn-lg btn-block\"><span class=\"glyphicon glyphicon-trash\"> </span></a></td>" + 
-        "<td><span class=\"glyphicon glyphicon-floppy-disk\"></pan></td>" +
+    var html = "";
+    var producto;
+
+    $.get( URLSERVER + "marcas_productos", function( marcas ) {
+
+      for(var index in data) {
+        
+        producto = data[index];
+        var marca = getMarca(producto.id_marca_producto, marcas);
+        
+        html += 
+        "<tr onclick=\"mostrarModalModificar(" + producto.id + ");\">" + 
+        "<td>" + producto.codigo_producto + "</td>" +
+        "<td>" + marca.nombre_marca_producto + "</td>"+
+        "<td>" + producto.nombre_producto + "</td>" +
+        "<td>" + producto.cantidad_producto + "</td>" +
+        "<td>" + producto.medida_producto + "</td>" +
+        "<td>" + producto.precio_neto_producto +"</td>" +
+        "<td>" + producto.precio_venta_producto +"</td>" +
+        "<td><a class=\"btn btn-info btn-lg btn-block\" onclick=\"mostrarModalEliminar(" + producto.id + ", event)\"><span class=\"glyphicon glyphicon-trash\"> </span></a></td>" + 
         "</tr>";
-    };
-    
-    $('.table-condensed tbody').html(html);
+      };
+
+      $('.table-condensed tbody').html(html);
+    });
   });
 }
 
-function eliminarProductos() {
+/**
+ * 
+ * @param {int} id
+ * @param {array} marcas
+ * @returns {Marca}
+ */
+function getMarca(id, marcas) {
 
-  $('input[name="productos[]"]:checked').each(function() {
+  for(var index in marcas) {
+    
+    if (marcas[index].id === id) {
+      return marcas[index];
+    }
+  }
+}
 
-    datos = { 'id': $(this).val() };
-    operacionServidor("productos", "DELETE", datos);
-  });
-  
+/**
+ * Funcion utilizada para eliminar productos de la BD
+ * @returns 
+ */
+function eliminarProducto() {
+
+  var id = $('#modalEliminarProducto').attr('data-id-producto');
+
+  datos = { 'id': id };
+  operacionServidor("productos", "DELETE", datos);
+
+  $('#modalEliminarProducto').attr('data-id-producto', '');
   $('#modalEliminarProducto').modal('hide');
   cargarListaProductos();
 }
 
+/**
+ * Funcion utilizada para crear productos en BD
+ * @returns 
+ */
 function crearProducto() {
 
   datos = {  
@@ -85,9 +133,9 @@ function crearProducto() {
     'cantidad_producto': $('#cantidad').val(),
     'precio_neto_producto': $('#compra').val(),
     'precio_venta_producto': $('#venta').val(),
-    'id_marca_producto': $('#idMarca').val()
+    'id_marca_producto': $('#marca').attr('data-id-marca')
   };
-  
+
   operacionServidor("productos", "POST", datos);
 
   $('#codigo').val('');
@@ -97,9 +145,14 @@ function crearProducto() {
   $('#venta').val('');
   $('#compra').val('');
   $('#marca').val('');
-  $('#idMarca').val('');
+  $('#marca').attr('data-id-marca', '');
 }
 
+/**
+ * Funcion utilizada para realizar cambios en un 
+ * producto especifico
+ * @returns 
+ */
 function modificarProducto() {
 
   datos = {
@@ -118,9 +171,19 @@ function modificarProducto() {
   $('#modalModificarProducto').modal('hide');
 }
 
-function cargarProducto() {
+/**
+ * Funcion utilizada para obtener la informacion de
+ * un producto especifico
+ * @param {string} id identificador de producto
+ * @returns 
+ */
+function cargarProducto(id) {
 
-  var id = getUrlParameter('id');
+  if (id === undefined) {
+    
+    var id = getUrlParameter('id');
+  }
+  
   if (id !== undefined ) {
   
     data = { id : id };
@@ -164,39 +227,63 @@ function cargarProducto() {
   }
 }
 
-function operacionServidor(ruta, tipo, datos) {
-
-  $.ajax({
-      url: URLSERVER + ruta,
-      type: tipo,
+/**
+ * Funcion utilizada para mostrar los datos de
+ * un producto especifico
+ * 
+ * @param {int} id
+ * @returns 
+ */
+function mostrarModalModificar(id) {
+  
+  if (id !== undefined ) {
+  
+    data = { id : id };
+    $.ajax({
+      url: URLSERVER + 'productos/' + id,
+      type: 'GET',
       dataType: 'json',
-      data: JSON.stringify(datos),
+      data: JSON.stringify(data),
       processData: false,
       contentType: 'application/json',
-      CrossDomain:true,
+      CrossDomain: true,
       async: false,
       success: function (datos) {
-        console.log(datos);
-        mostrarAlerta('OK', 'Operacion realizada con exito!');
+        $.get( URLSERVER + "marcas_productos/" + datos.id_marca_producto, function( marca ) {
+          
+          $('#modalModificarProducto').modal('show');
+          $('#id').val(datos.id);
+          $('#codigo').val(datos.codigo_producto);
+          $('#nombre').val(datos.nombre_producto);
+          $('#medida').val(datos.medida_producto);
+          $('#cantidad').val(datos.cantidad_producto);
+          $('#venta').val(datos.precio_venta_producto);
+          $('#compra').val(datos.precio_neto_producto);
+          $('#marca').val(marca.nombre_marca_producto);
+          $('#marca').attr('data-id-marca', datos.id_marca_producto);
+        });
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log(xhr.status);
         console.log(xhr.responseText);
-        mostrarAlerta('ERROR', 'Ocurrio un error, porfavor consulte con el administrador.');
+
+        $("#alertCargarProducto").show("slow");
       }
     });
+  }
 }
 
-function getUrlParameter(sParam)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-            return sParameterName[1];
-        }
-    }
-}  
+/**
+ * Funcion que nos permite mostrar 
+ * la ventana de dialogo para eliminar un producto determinado
+ * @param {int} id
+ * @param {object} event
+ * @returns 
+ */
+function mostrarModalEliminar(id, event) {
+  
+    event.stopPropagation();
+    $('#modalEliminarProducto').modal('show');
+    $('#modalEliminarProducto').attr('data-id-producto', id);
+}
+  

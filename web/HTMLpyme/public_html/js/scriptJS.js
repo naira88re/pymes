@@ -1,3 +1,5 @@
+// Variable global utilizada para establecer conexion con el servicio web
+var URLSERVER = 'http://nairare.gabitosoft.com/pymes/public/';
 
 /**
  * Carga archivo html con los controles de la 
@@ -105,8 +107,8 @@ function operacionServidor(ruta, tipo, datos) {
  * @param {string} sParam
  * @returns {getUrlParameter.sParameterName}
  */
-function getUrlParameter(sParam)
-{
+function getUrlParameter(sParam) {
+
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
     for (var i = 0; i < sURLVariables.length; i++) 
