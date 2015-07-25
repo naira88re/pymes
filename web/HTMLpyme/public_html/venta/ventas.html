@@ -1,76 +1,78 @@
 <form>
     <!--Datos principales de venta-->
-    <div>
-        <input class="form-control" type="number" placeholder="Numero de Venta" name="nroVenta">
-        <input class="form-control" type="text" name="fecha" value="12/07/2015" readonly>
+    <div class="input-group input-group-lg">
+<!--      <input class="form-control" type="number" placeholder="Numero de Venta" name="nroVenta">-->
+      <input class="form-control" type="text" id="fecha" name="fecha" readonly>
+      <div class="input-group-btn">
+        <input class="btn btn-success " type="button" value="Registrar Venta"/>
+      <input class="btn btn-danger " type="button" value="Cancelar Venta"/>
+      </div>
     </div>
     <br>
     <!--Datos principales de venta-->
-    <div class="row">
-        <input class="col-md-3 btn btn-primary btn-lg" type="button" data-toggle="modal" data-target="#myModal" value="Producto"/>
-        <input class="col-md-3 btn btn-primary btn-lg" type="button" value="Calcular"/>
-        <input class="col-md-3 btn btn-success btn-lg" type="button" value="Realizar Venta"/>
-        <input class="col-md-3 btn btn-danger btn-lg" type="button" value="Cancelar Venta"/>
+    <div class="form-inline">
+      <input type="text" id="nombreProducto" data-id-producto="" class="input-lg form-control" placeholder="Nombre/Producto">
+      <div class="input-group input-group-lg">
+        <input type="text" id="cantidadProducto" class="form-control" placeholder="Cantidad">
+        <span class="input-group-btn">
+          <a href="#" class="btn btn-info" id="btn-insertar-producto" role="button">&nbsp;+&nbsp;</a>
+        </span>
+<!--      <input class="btn btn-primary btn-lg" type="button" data-toggle="modal" data-target="#myModal" value="Agregar Productos"/>-->
+<!--      <input class="btn btn-primary btn-lg" type="button" value="Calcular"/>-->
+      </div>
     </div>
     <br>
     <!--Tabla de ventas-->
-    <div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr class="success">
-                <th>
-                    Codigo
-                </th>
-                <th>
-                    Nombre de producto
-                </th>
-                <th>
-                    Precio/U
-                </th>
-                <th>
-                    Cantidad
-                </th>
-                <th>
-                    Total
-                </th>
-                <th>
-                    
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2313123</td>
-                <td>Labial Epson</td>
-                <td>12.0</td>
-                <td>3</td>
-                <td>36.0</td>
-                <td>
-                  <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                  </button>
-                  </td>
-            </tr>
-            <tr>
-                <td>2313123</td>
-                <td>Labial Epson</td>
-                <td>12.0</td>
-                <td>3</td>
-                <td>36.0</td>
-            </tr>
-            <tr>
-                <td>2313123</td>
-                <td>Labial Epson</td>
-                <td>12.0</td>
-                <td>3</td>
-                <td>36.0</td>
-            </tr>
-        </tbody>
+    <table class="table table-condensed">
+      <thead>
+        <tr class="success">
+          <th>Codigo</th>
+          <th>Marca</th>
+          <th>Nombre de producto</th>
+          <th>Contenido</th>
+          <th>Cantidad</th>
+          <th>Medida</th>
+          <th>Precio Compra</th>
+          <th>Precio/U</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+<!--        <tr>
+          <td>2313123</td>
+          <td>Labial Epson</td>
+          <td>12.0</td>
+          <td>3</td>
+          <td>36.0</td>
+          <td>
+            <button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>2313123</td>
+          <td>Labial Epson</td>
+          <td>12.0</td>
+          <td>3</td>
+          <td>36.0</td>
+        </tr>
+        <tr>
+          <td>2313123</td>
+          <td>Labial Epson</td>
+          <td>12.0</td>
+          <td>3</td>
+          <td>36.0</td>
+        </tr>-->
+      </tbody>
     </table>
-    </div>
-</form>
-        
-        
+</form> 
+
+
+<script type="text/javascript">
+  initRegistrarVentas();
+</script>
         <!-- Button trigger modal -->
 <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Launch demo modal
@@ -87,7 +89,7 @@
       <div class="modal-body">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Ingrese Nombre o Codigo">
+            <input type="text" class="form-control">
           </div>
           <button type="button" class="btn btn-info">Buscar</button>
         </form>
