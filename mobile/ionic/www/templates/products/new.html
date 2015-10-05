@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">NUEVO PRODUCTO</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">CERRAR</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="newProduct()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">NOMBRE</span>
+          <input type="text" ng-model="newProductData.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">CODIGO</span>
+          <input type="text" ng-model="newProductData.code">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">DESCRIPCION</span>
+          <input type="text" ng-model="newProductData.description">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">GUARDAR</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -11,7 +11,7 @@ function cargarPaginaPrincipal() {
   $(document).ready(function() {
 
     $(".navbar").load('navbar.html');
-    $("#contenedor_principal").load('login.html');
+    $("#contenedor_principal").load('usuario/inicioAdmin.html');
   });
   
   // Agregamos el evento para mostrar el gif de espera

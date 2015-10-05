@@ -71,8 +71,8 @@ function autoCompletarProducto() {
  * @param {object} marca 
  * @returns {string} html
  */
-function generarHTMLProducto(producto, marca) {
-  console.log('producto', producto);
+function generarHTMLProducto(producto, marca , cantidad) {
+
   var html = 
     "<tr>" + 
     "<td>" + producto.codigo_producto + "</td>" +
@@ -80,6 +80,7 @@ function generarHTMLProducto(producto, marca) {
     "<td>" + producto.nombre_producto + "</td>" +
     "<td>" + producto.cantidad_producto + "</td>" +
     "<td>" + producto.medida_producto + "</td>" +
+    "<td>" + cantidad + "</td>" +
     "<td>" + producto.precio_neto_producto +"</td>" +
     "<td>" + producto.precio_venta_producto +"</td>" +
     "<td><a class=\"btn btn-info btn-lg btn-block\" onclick=\"mostrarModalEliminar(" + producto.id + ", event)\"><span class=\"glyphicon glyphicon-trash\"> </span></a></td>" + 
@@ -114,7 +115,7 @@ function agregarProducto() {
             var marca = data[index];
             if (marca.id === producto.id_marca_producto) {
 
-              var html = generarHTMLProducto(producto, marca.nombre_marca_producto);
+              var html = generarHTMLProducto(producto, marca.nombre_marca_producto, cantidad);
               $('.table-condensed tbody').append(html);
               break;
             }

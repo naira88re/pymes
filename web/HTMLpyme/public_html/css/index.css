@@ -27,3 +27,8 @@ if it's not present, don't show loader */
 .textoVino{
     color : #a94442 !important;
 }
+
+.dl-menuopen {
+    
+    z-index: 999999 !important;
+}
