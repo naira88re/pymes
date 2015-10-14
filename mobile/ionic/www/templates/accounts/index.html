@@ -1,0 +1,45 @@
+<ion-view view-title="Registros Contables">
+  <ion-content>
+    <ul class="list">
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" checked>
+        </label>
+        Mostrar Entradas
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" checked>
+        </label>
+        Mostrar Salidas
+      </li>
+    </ul>
+    <button class="button button-block button-balanced" ng-click="displayForm()">
+      NUEVO REGISTRO CONTABLE
+    </button>
+    <ion-list ng-controller="AccountCtrl"
+              show-delete="shouldShowDelete"
+              show-reorder="shouldShowReorder"
+              can-swipe="listCanSwipe">
+      <ion-item ng-repeat="item in items">
+
+        <h2>{{item.date}} / {{item.type}} / {{item.amount}} Bs / {{item.reason}}</h2>
+        <p>{{item.description}}</p>
+        <ion-option-button class="button-positive"
+                           ng-click="edit(item)">
+          Modificar
+        </ion-option-button>
+        <ion-option-button class="button-assertive"
+                           ng-click="delete(item)">
+          Eliminar
+        </ion-option-button>
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="items.splice($index, 1)">
+        </ion-delete-button>
+        <ion-reorder-button class="ion-navicon"
+                            on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+        </ion-reorder-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

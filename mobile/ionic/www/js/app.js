@@ -85,6 +85,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'ProductCtrl'
       }
     }
+  })
+  
+  .state('app.sales', {
+    url: "/sales",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/sales/index.html",
+        controller: 'SaleCtrl'
+      }
+    }
+  })
+
+  .state('app.accounts', {
+    url: "/accounts",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/accounts/index.html",
+        controller: 'AccountCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
