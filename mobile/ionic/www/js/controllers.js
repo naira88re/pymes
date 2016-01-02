@@ -1,5 +1,12 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic', 'ngResource'])
 
+.factory('FactoryService', function ($resource) {
+    return $resource('http://localhost/pymes/public/empresas/:id', {},
+    {
+      'query': { method: 'GET', isArray: true },
+      'get': {method: 'GET'}
+    });
+})
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
   $scope.loginData = {};
@@ -38,58 +45,80 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {
 
-  
+
 })
 
-.controller('FactoryCtrl', function($scope, $ionicModal, $timeout) {
+.controller('FactoryCtrl', function($scope, $ionicModal, $timeout, FactoryService, FactoryDelete) {
 
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = true;
 
-  $scope.items = [
-    { name: 'Unilever', code: 1, phone: '71721222' },
-    { name: 'Loreal', code: 2, phone: '4232343'},
-    { name: 'Nivea', code: 3, phone: '43433112' },
-    { name: 'Gillete', code: 4, phone: '7432233' }
-  ];
-  
-  // New product modal section
-  
-  // Form data for the login modal
-  $scope.newProductData = {};
+  $scope.items =  FactoryService.query();
 
-  // Create the login modal that we will use later
+  // Create the new factory modal that we will use later
   $ionicModal.fromTemplateUrl('templates/factories/new.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
-  // Triggered in the login modal to close it
+  /**
+   * Function to close modal
+   */
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
 
-  // Open the new product modal
-  $scope.displayForm = function() {
+  /**
+   * Function to open modal
+   */
+  $scope.displayModal = function() {
     $scope.modal.show();
   };
 
-  // Perform the login action when the user submits the login form
+  /**
+   * Function to create a new Factory
+   */
+  $scope.factoryModel = {}; //define model
+  $scope.posts = FactoryService.query();
   $scope.newFactory = function() {
-    console.log('Doing login', $scope.loginData);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeModal();
-    }, 1000);
+    $scope.postData = {
+      'nombre': $scope.factoryModel.name,
+      'telefono': $scope.factoryModel.phone,
+      'direccion': $scope.factoryModel.address
+    };
+
+    //Post information to server
+    var post = new FactoryService($scope.postData);
+    post.$save().then(function(res) {
+      $scope.items.push(res);
+      $timeout(function() {
+        $scope.closeModal();
+      }, 200);
+    });
   };
+
+  /**
+   * Function to delete factory
+   */
+   $scope.deleteFactory = function(item) {
+
+     //Delete information from server
+     FactoryDelete.remove({id: item.id}, function(res) {
+
+       console.log('response', res);
+     });
+    //  post.remove().then(function(res) {
+    //    console.log('response', res);
+    //    $scope.items =  FactoryGet.query();
+    //  });
+   };
 })
 
 .controller('ProductCtrl', function($scope, $ionicModal, $timeout) {
-  
+
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = true;
@@ -102,9 +131,9 @@ angular.module('starter.controllers', [])
     { name: 'Crema Corporal', code: 5, description: 'Con proteccion solar' },
     { name: 'Desengrasante', code: 6, description: 'lo mejor para ropa' }
   ];
-  
+
   // New product modal section
-  
+
   // Form data for the login modal
   $scope.newProductData = {};
 
@@ -138,7 +167,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SaleCtrl', function($scope, $ionicModal, $timeout) {
-  
+
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = true;
@@ -151,9 +180,9 @@ angular.module('starter.controllers', [])
     { amount: '700', date: 'Viernes 14 Marz 2015', code: 5, description: 'Protector solar, Shampoo, Detergente', client: 'Miguel Hinojosa' },
     { amount: '12', date: 'Sabado 7 Nov 2015', code: 6, description: 'Pasta dental', client: 'Carlos Silva' }
   ];
-  
+
   // New product modal section
-  
+
   // Form data for the login modal
   $scope.newSaleData = {};
 
@@ -198,7 +227,7 @@ angular.module('starter.controllers', [])
     { date: 'Lunes 12 Ene 2016', reason: 'Devolucion', type: 'Entrada', amount: '300' },
     { date: 'Miercoles 2 Mar 2016', reason: 'Alquiler', type: 'Salida', amount: '800' }
   ];
-  
+
   // Form data for the login modal
   $scope.newAccountData = {};
 

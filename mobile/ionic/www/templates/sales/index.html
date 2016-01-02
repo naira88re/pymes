@@ -3,7 +3,7 @@
     <div class="list list-inset">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Buscar">
+        <input type="text" ng-model="searchProduct" placeholder="Buscar">
       </label>
     </div>
     <button class="button button-block button-balanced" ng-click="displayForm()">
@@ -13,7 +13,7 @@
               show-delete="shouldShowDelete"
               show-reorder="shouldShowReorder"
               can-swipe="listCanSwipe">
-      <ion-item ng-repeat="item in items">
+      <ion-item ng-repeat="item in items | filter:searchProduct">
 
         <h2>{{item.date}} - {{item.amount}} Bs</h2>
         <p>Codigo: {{item.code}}</p>

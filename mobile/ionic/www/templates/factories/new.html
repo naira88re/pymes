@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">NUEVA EMPRESA</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">CERRAR</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="newFactory()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">NOMBRE</span>
+          <input type="text" ng-model="factoryModel.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">TELEFONO</span>
+          <input type="text" ng-model="factoryModel.phone">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">DIRECCION</span>
+          <input type="text" ng-model="factoryModel.address">
+        </label>        
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">GUARDAR</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
